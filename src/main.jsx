@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { initializeApp } from 'firebase/app';
+import CartProvider from "./context/cart.provider.jsx";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBsLeB10C-yGlEAHV7Qavv0KXEC_i2kExk",
@@ -16,8 +18,10 @@ const firebaseConfig = {
 
   initializeApp(firebaseConfig);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-
-    <App />
-
-)
+  ReactDOM.createRoot(document.getElementById("root")).render(
+    <ChakraProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </ChakraProvider>
+  );
